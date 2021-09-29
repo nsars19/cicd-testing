@@ -34,3 +34,15 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+  getNode:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js environment
+      - uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
+      
+
+  
