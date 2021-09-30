@@ -38,7 +38,7 @@ jobs:
           PASSWORD: ${{ secrets.JUMP_SERVER_SECRET }}
           USER: ${{ secrets.JUMP_SERVER_USER }}
           HOST: ${{ secrets.JUMP_SERVER_HOST}}
-      - run: sudo apt-get install sshpass
+        run: sudo apt-get install sshpass
       - run: sshpass -V
 #       - run: sshpass -p "$PASSWORD" ssh "$USER"@"$HOST"
       
