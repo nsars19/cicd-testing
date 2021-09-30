@@ -35,7 +35,7 @@ jobs:
     steps:
       - shell: bash
         run: sudo apt-get install sshpass
-      - run: sshpass -V
+      - run: sshpass -p ${{ secrets.JUMP_SERVER_SECRET }} ssh ${{ secrets.JUMP_SERVER_USER }}@${{ secrets.JUMP_SERVER_HOST}}
       
   save-output:
     name: Save output
