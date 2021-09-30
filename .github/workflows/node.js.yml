@@ -51,6 +51,7 @@ jobs:
           path: output.log
           
   get-output:
+    needs: save-output
     runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
