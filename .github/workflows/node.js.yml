@@ -31,6 +31,7 @@ jobs:
       
   save-output:
     name: Save output
+    runs-on: ubuntu-latest
     steps:
       - shell: bash
         run: |
@@ -40,7 +41,9 @@ jobs:
         with:
           name: output-log-file
           path: output.log
-   get-output:
+          
+  get-output:
+    runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v2
