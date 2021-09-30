@@ -29,6 +29,14 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
       
+  install-sshpass:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - shell: bash
+        run: sudo apt-get install sshpass
+      - run: sshpass -V
+      
   save-output:
     name: Save output
     runs-on: ubuntu-latest
