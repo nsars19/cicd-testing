@@ -29,8 +29,22 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
       
+  install-sshpass:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - shell: bash
+        env:
+          PASSWORD: ${{ secrets.JUMP_SERVER_SECRET }}
+          USER: ${{ secrets.JUMP_SERVER_USER }}
+          HOST: ${{ secrets.JUMP_SERVER_HOST}}
+        run: sudo apt-get install sshpass
+      - run: sshpass -V
+#       - run: sshpass -p "$PASSWORD" ssh "$USER"@"$HOST"
+      
   save-output:
     name: Save output
+    runs-on: ubuntu-latest
     steps:
       - shell: bash
         run: |
@@ -40,7 +54,10 @@ jobs:
         with:
           name: output-log-file
           path: output.log
-   get-output:
+          
+  get-output:
+    needs: save-output
+    runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v2
